@@ -7,6 +7,8 @@ import './Layout.css'
 
 class Layout extends React.Component {
   render() {
+    let { children } = this.props;
+
     return (
       <Wrapper>
         <Header/>
@@ -16,8 +18,7 @@ class Layout extends React.Component {
             <Sidebar />
           </div>
 
-          <div className='content'>
-          </div>
+          <div className='content'>{children}</div>
         </div>
 
         <Footer/>
