@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{122:function(n,e,u){"use strict";u.r(e);var s=u(0),t=u.n(s);e.default=function(){return t.a.createElement("div",null,"ske48 kenkyuusei blogs!")}}}]);
-//# sourceMappingURL=component---src-pages-index-js-76c03212aa5c3a201e41.js.map
