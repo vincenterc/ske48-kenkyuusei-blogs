@@ -36,6 +36,7 @@ class Sidebar extends React.Component {
             generations.map(g => (
               <Generation
                 key={g.generation}
+                css='margin-bottom: 10px; &:last-child { margin-bottom: 0; }'
                 generation={g}
               />   
             ))
@@ -55,23 +56,15 @@ const Wrapper = styled.div`
   & > .content {
     padding: 10px 15px;
     background: #fff9ed;
-
-    & > div {
-      margin-bottom: 10px;
-    }
-
-    & > div:last-child {
-      margin-bottom: 0;
-    }
   }
 `
 
 class Generation extends React.Component {
   render() {
-    let { generation } = this.props;
+    let { css, generation } = this.props;
 
     return (
-      <Generation.Wrapper>
+      <Generation.Wrapper css={css}>
         <Generation.Title>{`${generation.generation}期生`}</Generation.Title>
         
         {
@@ -88,7 +81,9 @@ class Generation extends React.Component {
     )
   }
 
-  static Wrapper = styled.div``
+  static Wrapper = styled.div`
+    ${props => props.css}
+  `
 
   static Title = styled.h4`
     color: #e57e16;
