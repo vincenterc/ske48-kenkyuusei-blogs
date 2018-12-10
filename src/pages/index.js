@@ -55,7 +55,7 @@ const Wrapper = styled.div`
   }
 
   & > .content {
-    padding: 10px 30px;
+    padding: 10px 30px 15px;
     background: #fff9ed;
   }
 `
