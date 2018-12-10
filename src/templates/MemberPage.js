@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, withPrefix } from 'gatsby'
+import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
 
 const postList = [
@@ -30,7 +30,7 @@ class MemberPage extends React.Component {
               postList.map(p => (
                 <PostItem
                   key={p.postId}
-                  to={withPrefix(`/${p.memberId}/${p.postId}`)}
+                  to={`/${p.memberId}/${p.postId}`}
                 >
                   {p.postTitle}
                   <time>{p.postDate}</time>

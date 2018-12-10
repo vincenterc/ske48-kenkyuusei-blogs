@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, withPrefix } from 'gatsby'
+import { Link } from 'gatsby'
 
 class Header extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Header extends React.Component {
 
         <div className="header">
           <h1 className="title">
-            <Link to={withPrefix('/')}>SKE48 Kenkyuusei Blogs</Link>
+            <Link to='/'>SKE48 Kenkyuusei Blogs</Link>
           </h1>
           <p className="description">
             All blogs collected form <a href="http://www.ske48.co.jp/" target="_blank">the official website</a>

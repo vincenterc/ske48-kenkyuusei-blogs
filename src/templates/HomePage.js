@@ -1,6 +1,6 @@
 import React from "react"
 import styled from 'styled-components'
-import { Link, withPrefix } from 'gatsby'
+import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
 
 const generations = [
@@ -72,7 +72,7 @@ class Generation extends React.Component {
           generation.members.map(m => (
             <Generation.Member
               key={m.id}
-              to={withPrefix(`/${m.id}`)}
+              to={`/${m.id}`}
             >
               {m.jpnName}
               <span>{m.engName}</span> 

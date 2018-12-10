@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, withPrefix } from 'gatsby'
+import { Link } from 'gatsby'
 
 const generations = [
   {
@@ -71,7 +71,7 @@ class Generation extends React.Component {
           generation.members.map(m => (
             <Generation.Member
               key={m.id}
-              to={withPrefix(`/${m.id}`)}
+              to={`/${m.id}`}
             >
               {m.jpnName}
             </Generation.Member>
