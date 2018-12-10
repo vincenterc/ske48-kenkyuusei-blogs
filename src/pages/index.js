@@ -37,7 +37,7 @@ class HomePage extends React.Component {
             generations.map(g => (
               <Generation
                 key={g.generation}
-                css='margin-bottom: 10px; &:last-child { margin-bottom: 0; }'
+                extraCss='margin-bottom: 10px; &:last-child { margin-bottom: 0 }'
                 generation={g}
               />
             ))
@@ -62,10 +62,10 @@ const Wrapper = styled.div`
 
 class Generation extends React.Component {
   render() {
-    let {css, generation} = this.props;
+    let {extraCss, generation} = this.props;
 
     return (
-      <Generation.Wrapper css={css}>
+      <Generation.Wrapper extraCss={extraCss}>
         <Generation.Title>{`${generation.generation}期生`}</Generation.Title>
 
         {
@@ -84,7 +84,7 @@ class Generation extends React.Component {
   }
 
   static Wrapper = styled.div`
-    ${props => props.css}
+    ${props => props.extraCss}
   `
 
   static Title = styled.h3`
