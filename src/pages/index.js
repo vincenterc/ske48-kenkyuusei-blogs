@@ -30,7 +30,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h3 className='title'>Home</h3>
+        <h3 className='title'>HOME</h3>
 
         <div className='content'>
           {

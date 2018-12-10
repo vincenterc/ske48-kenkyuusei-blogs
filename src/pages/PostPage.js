@@ -8,7 +8,7 @@ class PostPage extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h3 className='title'>Post</h3>
+        <h3 className='title'>POST</h3>
 
         <div className='content'>
           <div className="post" dangerouslySetInnerHTML={{ __html: postContent }} />
