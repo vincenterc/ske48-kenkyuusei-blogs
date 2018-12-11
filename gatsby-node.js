@@ -1,4 +1,5 @@
 const path = require('path')
+const generations = require('./contents/generations')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -10,17 +11,22 @@ exports.createPages = ({ graphql, actions }) => {
     context: {},
   })
 
-  console.log('Creating member page...')
-  createPage({
-    path: '/aikawa_honoka/',
-    component: path.resolve('./src/templates/MemberPage.js'),
-    context: {},
-  })
+  console.log('Creating member and post pages...')
+  generations.map(g => {
+    g.members.map(m => {
+      createPage({
+        path: `/${m.id}/`,
+        component: path.resolve('./src/templates/MemberPage.js'),
+        context: { memberId: m.id },
+      })
 
-  console.log('Creating post page...')
-  createPage({
-    path: '/aikawa_honoka/20171003060201364/',
-    component: path.resolve('./src/templates/PostPage.js'),
-    context: {},
+      m.posts.map(p => {
+        createPage({
+          path: `/${m.id}/${p.id}/`,
+          component: path.resolve('./src/templates/PostPage.js'),
+          context: { memberId: m.id, postId: p.id },
+        })
+      })
+    })
   })
 }
