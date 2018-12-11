@@ -5,8 +5,8 @@ const PageWrapper = (Comp) => {
   class Wrapper extends React.Component {
     render() {
       return (
-        <Layout>
-          <Comp/>
+        <Layout {...this.props}>
+          <Comp {...this.props}/>
         </Layout>
       )
     }
