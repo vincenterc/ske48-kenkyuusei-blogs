@@ -1,5 +1,5 @@
 const path = require('path')
-const generations = require('./contents/generations')
+const generations = require('./content/generations')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `/${m.id}/${p.id}/`,
           component: path.resolve('./src/templates/PostPage.js'),
-          context: { memberId: m.id, postId: p.id },
+          context: { memberId: m.id, postId: p.id, postContent: p.content },
         })
       })
     })
