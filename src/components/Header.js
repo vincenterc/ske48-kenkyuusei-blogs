@@ -24,7 +24,6 @@ class Header extends React.Component {
 }
 
 const Wrapper = styled.header`
-  margin-bottom: 20px;
   display: flex;
   
   & > .logo {

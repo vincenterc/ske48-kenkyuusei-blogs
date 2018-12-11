@@ -10,7 +10,6 @@ class Footer extends React.Component {
 }
 
 const Wrapper = styled.footer`
-  margin-top: 20px;
   padding: 5px;
   background-color: #f8b500;
   color: #fff;

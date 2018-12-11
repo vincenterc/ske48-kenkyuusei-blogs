@@ -29,10 +29,14 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   max-width: 970px;
+  min-height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
   & > .body {
-    margin-bottom: 20px;
+    flex-grow: 1;
+    margin: 20px 0;
     display: flex;
 
     & > .sidebar {
