@@ -1,33 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from './Header'
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar'
 import Footer from './Footer'
 import './Layout.css'
 
 class Layout extends React.Component {
   render() {
-    let { children } = this.props;
+    let { children } = this.props
 
     return (
       <Wrapper>
-        <Header/>
+        <Container>
+          <Header />
 
-        <div className='body'>
-          <div className='sidebar'>
-            <Sidebar />
+          <div className="body">
+            <div className="sidebar">
+              <Sidebar />
+            </div>
+
+            <div className="content">{children}</div>
           </div>
 
-          <div className='content'>{children}</div>
-        </div>
-
-        <Footer/>
+          <Footer />
+        </Container>
       </Wrapper>
     )
   }
 }
 
 const Wrapper = styled.div`
+  background: url('http://sp.ske48.co.jp/img/ameblo_bg.jpg');
+`
+
+const Container = styled.div`
   max-width: 970px;
   min-height: 100vh;
   margin: 0 auto;
