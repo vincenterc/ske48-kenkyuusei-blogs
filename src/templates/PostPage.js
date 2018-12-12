@@ -22,10 +22,31 @@ class PostPage extends React.Component {
             dangerouslySetInnerHTML={{ __html: postContent }}
           />
 
-          <PostNav memberId={memberId} memberName={memberName} />
+          <PostNav
+            memberId={memberId}
+            memberName={memberName}
+            prevPostId={this._getNextPrevPostId().prevPostId}
+            nextPostId={this._getNextPrevPostId().nextPostId}
+          />
         </div>
       </Wrapper>
     )
+  }
+
+  _getNextPrevPostId = () => {
+    let {
+      pageContext: { postId },
+      postList,
+    } = this.props
+    let postIndex = postList.findIndex(p => p.id === postId)
+    let prevPostId =
+      postIndex !== -1 && postIndex !== 0 ? postList[postIndex - 1].id : ''
+    let nextPostId =
+      postIndex !== -1 && postIndex !== postList.length - 1
+        ? postList[postIndex + 1].id
+        : ''
+
+    return { prevPostId, nextPostId }
   }
 }
 
@@ -71,6 +92,7 @@ export default PageWrapper(
   connect(
     (state, ownProps) => ({
       memberName: state.members[ownProps.pageContext.memberId].jpnName,
+      postList: state.posts[ownProps.pageContext.memberId].list,
       postContent:
         state.posts[ownProps.pageContext.memberId].map[
           ownProps.pageContext.postId
