@@ -1,42 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
 
-const postList = [
-  {
-    memberId: 'aikawa_honoka',
-    postId: '20171003060201364',
-    postTitle: 'ほのののぶろぐ(*^^*)♪たこやきとアイス',
-    postDate: '2017.10.03 06:12',
-  },
-  {
-    memberId: 'aikawa_honoka',
-    postId: '20170927184122396',
-    postTitle: 'ほのののブログ(*^^*)♪ ',
-    postDate: '2017.09.27 18:51',
-  },
-]
-
 class MemberPage extends React.Component {
   render() {
+    let {
+      pageContext: { memberId },
+      postList,
+    } = this.props
+
     return (
       <Wrapper>
-        <h3 className='title'>MEMBER</h3>
+        <h3 className="title">MEMBER</h3>
 
-        <div className='content'>
-          <div className='post-list'>
-            {
-              postList.map(p => (
-                <PostItem
-                  key={p.postId}
-                  to={`/${p.memberId}/${p.postId}`}
-                >
-                  {p.postTitle}
-                  <time>{p.postDate}</time>
-                </PostItem>
-              ))
-            }
+        <div className="content">
+          <div className="post-list">
+            {postList.map(p => (
+              <PostItem key={p.id} to={`/${memberId}/${p.id}`}>
+                {p.title}
+                <time>{p.date}</time>
+              </PostItem>
+            ))}
           </div>
         </div>
       </Wrapper>
@@ -80,4 +66,11 @@ const PostItem = styled(Link)`
   }
 `
 
-export default PageWrapper(MemberPage)
+export default PageWrapper(
+  connect(
+    (state, ownProps) => ({
+      postList: state.posts[ownProps.pageContext.memberId].list,
+    }),
+    null
+  )(MemberPage)
+)
