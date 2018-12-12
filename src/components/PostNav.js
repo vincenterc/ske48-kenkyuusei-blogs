@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import NavButton from './NavButton'
 
 class PostNav extends React.Component {
   render() {
@@ -42,21 +42,6 @@ class PostNav extends React.Component {
 
 const Wrapper = styled.div`
   text-align: center;
-`
-
-const NavButton = styled(Link)`
-  padding: 0 15px;
-  color: #e57e16;
-  font-size: 14px;
-  line-height: 20px;
-  text-decoration: none;
-
-  &:hover {
-    color: #f8b500;
-    text-decoration: underline;
-  }
-
-  ${props => props.extracss}
 `
 
 export default PostNav
