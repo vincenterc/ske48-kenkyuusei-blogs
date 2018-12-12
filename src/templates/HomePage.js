@@ -1,33 +1,13 @@
 import React from "react"
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
 
-const generations = [
-  {
-    generation: 7,
-    members: [
-      {
-        id: 'aikawa_honoka',
-        jpnName: '相川暖花',
-        engName: 'HONOKA AIKAWA',
-      },
-    ],
-  },
-  {
-    generation: 8,
-    members: [
-      {
-        id: 'atsumi_ayaha',
-        jpnName: '渥美彩羽',
-        engName: 'AYAHA ATSUMI',
-      },
-    ],
-  },
-]
-
 class HomePage extends React.Component {
   render() {
+    let { generations } = this.props
+
     return (
       <Wrapper>
         <h3 className='title'>HOME</h3>
@@ -108,4 +88,9 @@ class Generation extends React.Component {
   `
 }
 
-export default PageWrapper(HomePage)
+export default PageWrapper(
+  connect(
+    state => ({ generations: state.generations }),
+    null
+  )(HomePage)
+)

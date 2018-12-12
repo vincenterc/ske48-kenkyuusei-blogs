@@ -1,32 +1,12 @@
 import React from 'react'
+import { connect }from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-const generations = [
-  {
-    generation: 7,
-    members: [
-      {
-        id: 'aikawa_honoka',
-        jpnName: '相川暖花',
-        engName: 'HONOKA AIKAWA',
-      },
-    ],
-  },
-  {
-    generation: 8,
-    members: [
-      {
-        id: 'atsumi_ayaha',
-        jpnName: '渥美彩羽',
-        engName: 'AYAHA ATSUMI',
-      },
-    ],
-  },
-]
-
 class Sidebar extends React.Component {
   render() {
+    let { generations } = this.props;
+
     return (
       <Wrapper>
         <h3 className='title'>Member List</h3>
@@ -90,8 +70,10 @@ class Generation extends React.Component {
   `
 
   static Member = styled(Link)`
+    display: block;
     color: #e57e16;
     font-size: 14px;
+    line-height: 20px;
     text-decoration: none;
 
     &:hover {
@@ -101,4 +83,7 @@ class Generation extends React.Component {
   `
 }
 
-export default Sidebar
+export default connect(
+  state => ({ generations: state.generations }),
+  null
+)(Sidebar)
