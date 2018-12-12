@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
+import NavButton from '../components/NavButton'
 
 class MemberPage extends React.Component {
   render() {
@@ -24,6 +25,10 @@ class MemberPage extends React.Component {
               </PostItem>
             ))}
           </div>
+
+          <div className="nav">
+            <NavButton to="/">HOME</NavButton>
+          </div>
         </div>
       </Wrapper>
     )
@@ -42,6 +47,10 @@ const Wrapper = styled.div`
 
     & > .post-list {
       margin-bottom: 15px;
+    }
+
+    & > .nav {
+      text-align: center;
     }
   }
 `
