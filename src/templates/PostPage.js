@@ -1,17 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import PageWrapper from '../components/PageWrapper'
 
 class PostPage extends React.Component {
   render() {
-    let { pageContext: { postContent } } = this.props;
+    let { postContent } = this.props
 
     return (
       <Wrapper>
-        <h3 className='title'>POST</h3>
+        <h3 className="title">POST</h3>
 
-        <div className='content'>
-          <div className="post" dangerouslySetInnerHTML={{ __html: postContent }} />
+        <div className="content">
+          <div
+            className="post"
+            dangerouslySetInnerHTML={{ __html: postContent }}
+          />
         </div>
       </Wrapper>
     )
@@ -56,4 +60,14 @@ const Wrapper = styled.div`
   }
 `
 
-export default PageWrapper(PostPage)
+export default PageWrapper(
+  connect(
+    (state, ownProps) => ({
+      postContent:
+        state.posts[ownProps.pageContext.memberId].map[
+          ownProps.pageContext.postId
+        ].content,
+    }),
+    null
+  )(PostPage)
+)

@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
         createPage({
           path: `/${m.id}/${p.id}/`,
           component: path.resolve('./src/templates/PostPage.js'),
-          context: { memberId: m.id, postId: p.id, postContent: p.content },
+          context: { memberId: m.id, postId: p.id },
         })
       })
     })
