@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import PageWrapper from '../components/PageWrapper'
 import Pagination from '../components/Pagination'
 import NavButton from '../components/NavButton'
@@ -10,6 +11,7 @@ class MemberPage extends React.Component {
   render() {
     let {
       pageContext: { memberId, currentPage, limit, skip },
+      memberName,
       postList,
     } = this.props
     let numOfPages = Math.ceil(postList.length / limit)
@@ -19,6 +21,10 @@ class MemberPage extends React.Component {
 
     return (
       <Wrapper>
+        <Helmet>
+          <title>SKE48 BLOGS | {memberName}</title>
+        </Helmet>
+
         <h3 className="title">MEMBER</h3>
 
         <div className="content">
@@ -90,6 +96,7 @@ const PostItem = styled(Link)`
 export default PageWrapper(
   connect(
     (state, ownProps) => ({
+      memberName: state.members[ownProps.pageContext.memberId].jpnName,
       postList: state.posts[ownProps.pageContext.memberId].list,
     }),
     null
