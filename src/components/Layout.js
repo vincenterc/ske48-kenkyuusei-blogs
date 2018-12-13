@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
 import './Layout.css'
+import favicon from '../../images/favicon.ico'
 import global_bg from '../../images/global_bg.jpg'
 
 class Layout extends React.Component {
@@ -13,6 +15,12 @@ class Layout extends React.Component {
     return (
       <Wrapper>
         <Container>
+          <Helmet>
+            <title>SKE48 KENKYUUSEI BLOGS</title>
+            <meta name="description" content="SKE48 Kenkyuusei Blogs" />
+            <link rel="icon" href={favicon} />
+          </Helmet>
+
           <Header />
 
           <div className="body">
