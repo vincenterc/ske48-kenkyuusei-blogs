@@ -4,6 +4,7 @@ import Header from './Header'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
 import './Layout.css'
+import global_bg from '../../images/global_bg.jpg'
 
 class Layout extends React.Component {
   render() {
@@ -30,7 +31,7 @@ class Layout extends React.Component {
 }
 
 const Wrapper = styled.div`
-  background: url('http://sp.ske48.co.jp/img/ameblo_bg.jpg');
+  background: url(${global_bg});
 `
 
 const Container = styled.div`
