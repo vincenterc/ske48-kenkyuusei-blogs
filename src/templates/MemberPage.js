@@ -3,14 +3,19 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PageWrapper from '../components/PageWrapper'
+import Pagination from '../components/Pagination'
 import NavButton from '../components/NavButton'
 
 class MemberPage extends React.Component {
   render() {
     let {
-      pageContext: { memberId },
+      pageContext: { memberId, currentPage, limit, skip },
       postList,
     } = this.props
+    let numOfPages = Math.ceil(postList.length / limit)
+    let postBeginIndex = skip
+    let postEndIndex =
+      currentPage === numOfPages ? postList.length : skip + limit
 
     return (
       <Wrapper>
@@ -18,13 +23,20 @@ class MemberPage extends React.Component {
 
         <div className="content">
           <div className="post-list">
-            {postList.map(p => (
+            {postList.slice(postBeginIndex, postEndIndex).map(p => (
               <PostItem key={p.id} to={`/${memberId}/${p.id}`}>
                 {p.title}
                 <time>{p.date}</time>
               </PostItem>
             ))}
           </div>
+
+          <Pagination
+            extracss="margin-bottom: 10px;"
+            memberId={memberId}
+            currentPage={currentPage}
+            numOfPages={numOfPages}
+          />
 
           <div className="nav">
             <NavButton to="/">HOME</NavButton>
