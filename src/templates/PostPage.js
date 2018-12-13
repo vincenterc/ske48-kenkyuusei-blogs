@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import PageWrapper from '../components/PageWrapper'
 import PostNav from '../components/PostNav'
 
@@ -9,11 +10,18 @@ class PostPage extends React.Component {
     let {
       pageContext: { memberId },
       memberName,
+      postTitle,
       postContent,
     } = this.props
 
     return (
       <Wrapper>
+        <Helmet>
+          <title>
+            SKE48 BLOGS | {memberName} | {postTitle}
+          </title>
+        </Helmet>
+
         <h3 className="title">POST</h3>
 
         <div className="content">
@@ -93,6 +101,10 @@ export default PageWrapper(
     (state, ownProps) => ({
       memberName: state.members[ownProps.pageContext.memberId].jpnName,
       postList: state.posts[ownProps.pageContext.memberId].list,
+      postTitle:
+        state.posts[ownProps.pageContext.memberId].map[
+          ownProps.pageContext.postId
+        ].title,
       postContent:
         state.posts[ownProps.pageContext.memberId].map[
           ownProps.pageContext.postId
