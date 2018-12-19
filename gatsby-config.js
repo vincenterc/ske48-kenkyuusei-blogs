@@ -1,4 +1,4 @@
 module.exports = {
-  pathPrefix: "/ske48-kenkyuusei-blogs-v3",
+  pathPrefix: '/ske48-kenkyuusei-blogs',
   plugins: [`gatsby-plugin-styled-components`],
 }
