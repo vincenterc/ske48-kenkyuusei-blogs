@@ -7,4 +7,4 @@ This version is rewrite the [v2][] with react, redux, and gatsbyjs:
 
 [SKE48 Kenkyuusei BLogs]: https://vincenterc.github.io/ske48-kenkyuusei-blogs/
 [v2]:
-https://github.com/vincenterr/ske48-kenkyuusei-blogs-v2
+https://github.com/vincenterc/ske48-kenkyuusei-blogs-v2
