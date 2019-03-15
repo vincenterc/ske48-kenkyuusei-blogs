@@ -46,7 +46,7 @@ class PostPage extends React.Component {
       pageContext: { postId },
       postList,
     } = this.props
-    let postIndex = postList.findIndex(p => p.id === postId)
+    let postIndex = postList.findIndex(p => p.identity === postId)
     let prevPostId =
       postIndex !== -1 && postIndex !== 0 ? postList[postIndex - 1].id : ''
     let nextPostId =
@@ -99,7 +99,7 @@ const Wrapper = styled.div`
 export default PageWrapper(
   connect(
     (state, ownProps) => ({
-      memberName: state.members[ownProps.pageContext.memberId].jpnName,
+      memberName: state.members[ownProps.pageContext.memberId].name,
       postList: state.posts[ownProps.pageContext.memberId].list,
       postTitle:
         state.posts[ownProps.pageContext.memberId].map[

@@ -20,10 +20,10 @@ exports.createPages = ({ graphql, actions }) => {
       Array.from({ length: numOfPages }).forEach((_, i) => {
         if (i === 0) {
           createPage({
-            path: `/${m.id}/`,
+            path: `/${m.identity}/`,
             component: path.resolve('./src/templates/MemberPage.js'),
             context: {
-              memberId: m.id,
+              memberId: m.identity,
               currentPage: i + 1,
               limit: postsPerPage,
               skip: i * postsPerPage,
@@ -32,10 +32,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         createPage({
-          path: `/${m.id}/${i + 1}/`,
+          path: `/${m.identity}/${i + 1}/`,
           component: path.resolve('./src/templates/MemberPage.js'),
           context: {
-            memberId: m.id,
+            memberId: m.identity,
             currentPage: i + 1,
             limit: postsPerPage,
             skip: i * postsPerPage,
@@ -45,9 +45,9 @@ exports.createPages = ({ graphql, actions }) => {
 
       m.posts.map(p => {
         createPage({
-          path: `/${m.id}/${p.id}/`,
+          path: `/${m.identity}/${p.identity}/`,
           component: path.resolve('./src/templates/PostPage.js'),
-          context: { memberId: m.id, postId: p.id },
+          context: { memberId: m.identity, postId: p.identity },
         })
       })
     })

@@ -6,7 +6,7 @@ const members = generations.reduce((gacc, g) => {
   const generation = g.members.reduce(
     (macc, m) => ({
       ...macc,
-      [m.id]: m,
+      [m.identity]: m,
     }),
     {}
   )
@@ -21,12 +21,12 @@ const posts = generations.reduce((gacc, g) => {
   const generation = g.members.reduce(
     (macc, m) => ({
       ...macc,
-      [m.id]: {
+      [m.identity]: {
         list: m.posts,
         map: m.posts.reduce(
           (pacc, p) => ({
             ...pacc,
-            [p.id]: p,
+            [p.identity]: p,
           }),
           {}
         ),

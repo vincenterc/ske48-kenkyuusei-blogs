@@ -1,26 +1,24 @@
 import React from 'react'
-import { connect }from 'react-redux'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 class Sidebar extends React.Component {
   render() {
-    let { generations } = this.props;
+    let { generations } = this.props
 
     return (
       <Wrapper>
-        <h3 className='title'>Member List</h3>
+        <h3 className="title">Member List</h3>
 
-        <div className='content'>
-          {
-            generations.map(g => (
-              <Generation
-                key={g.generation}
-                extraCss='margin-bottom: 10px; &:last-child { margin-bottom: 0; }'
-                generation={g}
-              />   
-            ))
-          }
+        <div className="content">
+          {generations.map(g => (
+            <Generation
+              key={g.identity}
+              extraCss="margin-bottom: 10px; &:last-child { margin-bottom: 0; }"
+              generation={g}
+            />
+          ))}
         </div>
       </Wrapper>
     )
@@ -41,22 +39,17 @@ const Wrapper = styled.div`
 
 class Generation extends React.Component {
   render() {
-    let { extraCss, generation } = this.props;
+    let { extraCss, generation } = this.props
 
     return (
       <Generation.Wrapper extraCss={extraCss}>
-        <Generation.Title>{`${generation.generation}期生`}</Generation.Title>
-        
-        {
-          generation.members.map(m => (
-            <Generation.Member
-              key={m.id}
-              to={`/${m.id}`}
-            >
-              {m.jpnName}
-            </Generation.Member>
-          ))
-        }
+        <Generation.Title>{`${generation.title.toUpperCase()}`}</Generation.Title>
+
+        {generation.members.map(m => (
+          <Generation.Member key={m.identity} to={`/${m.identity}`}>
+            {m.name}
+          </Generation.Member>
+        ))}
       </Generation.Wrapper>
     )
   }

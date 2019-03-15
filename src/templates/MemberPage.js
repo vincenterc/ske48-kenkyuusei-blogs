@@ -30,7 +30,7 @@ class MemberPage extends React.Component {
         <div className="content">
           <div className="post-list">
             {postList.slice(postBeginIndex, postEndIndex).map(p => (
-              <PostItem key={p.id} to={`/${memberId}/${p.id}`}>
+              <PostItem key={p.identity} to={`/${memberId}/${p.identity}`}>
                 {p.title}
                 <time>{p.date}</time>
               </PostItem>
@@ -96,7 +96,7 @@ const PostItem = styled(Link)`
 export default PageWrapper(
   connect(
     (state, ownProps) => ({
-      memberName: state.members[ownProps.pageContext.memberId].jpnName,
+      memberName: state.members[ownProps.pageContext.memberId].name,
       postList: state.posts[ownProps.pageContext.memberId].list,
     }),
     null
