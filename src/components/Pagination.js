@@ -31,7 +31,7 @@ class Pagination extends React.Component {
           </span>
         </NavButton>
 
-        <span class="page">{`Page ${currentPage}/${numOfPages}`}</span>
+        <span className="page">{`Page ${currentPage}/${numOfPages}`}</span>
 
         <NavButton
           extracss={`
