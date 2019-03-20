@@ -48,6 +48,7 @@ class Generation extends React.Component {
         {generation.members.map(m => (
           <Generation.Member key={m.identity} to={`/${m.identity}`}>
             {m.name}
+            {/*`(${m.posts.length})`*/}
           </Generation.Member>
         ))}
       </Generation.Wrapper>
