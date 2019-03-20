@@ -17,20 +17,18 @@ exports.createPages = ({ graphql, actions }) => {
       const postsPerPage = 15
       const numOfPages = Math.ceil(m.posts.length / postsPerPage)
 
-      Array.from({ length: numOfPages }).forEach((_, i) => {
-        if (i === 0) {
-          createPage({
-            path: `/${m.identity}/`,
-            component: path.resolve('./src/templates/MemberPage.js'),
-            context: {
-              memberId: m.identity,
-              currentPage: i + 1,
-              limit: postsPerPage,
-              skip: i * postsPerPage,
-            },
-          })
-        }
+      createPage({
+        path: `/${m.identity}/`,
+        component: path.resolve('./src/templates/MemberPage.js'),
+        context: {
+          memberId: m.identity,
+          currentPage: 1,
+          limit: postsPerPage,
+          skip: 0,
+        },
+      })
 
+      Array.from({ length: numOfPages }).forEach((_, i) => {
         createPage({
           path: `/${m.identity}/${i + 1}/`,
           component: path.resolve('./src/templates/MemberPage.js'),
