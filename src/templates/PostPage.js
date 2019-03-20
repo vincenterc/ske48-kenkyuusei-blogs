@@ -48,10 +48,12 @@ class PostPage extends React.Component {
     } = this.props
     let postIndex = postList.findIndex(p => p.identity === postId)
     let prevPostId =
-      postIndex !== -1 && postIndex !== 0 ? postList[postIndex - 1].id : ''
+      postIndex !== -1 && postIndex !== 0
+        ? postList[postIndex - 1].identity
+        : ''
     let nextPostId =
       postIndex !== -1 && postIndex !== postList.length - 1
-        ? postList[postIndex + 1].id
+        ? postList[postIndex + 1].identity
         : ''
 
     return { prevPostId, nextPostId }
