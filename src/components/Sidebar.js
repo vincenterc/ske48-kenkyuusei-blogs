@@ -39,8 +39,13 @@ const Wrapper = styled.div`
 `
 
 class Generation extends React.Component {
-  state = {
-    expanded: true,
+  constructor(props) {
+    super(props)
+    let { generation } = props
+
+    this.state = {
+      expanded: generation.identity === '9',
+    }
   }
 
   render() {
